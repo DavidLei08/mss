@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
 	<display-name>SpringMVC</display-name>
 	<!-- 首页配置 -->
 	<welcome-file-list>
@@ -34,7 +34,7 @@
 	<!-- spring配置文件加载 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:mybatis/spring-mybatis.xml</param-value>
+		<param-value>classpath:mybatis/spring-mybatis.xml,classpath:spring/spring-task.xml</param-value>
 	</context-param>
 	
 	<!-- 指定监听器加载的log4j配置文件 -->
@@ -64,4 +64,18 @@
 		<servlet-name>SpringMvc</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	  <!-- 异常页面配置 -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/view/common/404.html</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/view/common/500.html</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/WEB-INF/view/common/exception.jsp</location>
+  </error-page>
+  <!-- end -->
 </web-app>
